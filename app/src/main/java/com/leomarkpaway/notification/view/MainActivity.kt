@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.leomarkpaway.notification.NotificationApp
 import com.leomarkpaway.notification.R
+import com.leomarkpaway.notification.common.utils.intentActivity
 import com.leomarkpaway.notification.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,10 +18,23 @@ class MainActivity : AppCompatActivity() {
         val notificationId = 0
         val title = "My title"
         val message = "My message"
-        val notificationManager = NotificationApp.appModule.notification.notificationManager()
-        val notification = NotificationApp.appModule.notification.notification(title, message)
+        val notificationModule = NotificationApp.appModule.notification
+        val manager = notificationModule.notificationManager()
+
         binding.btnNotification.setOnClickListener {
-            notificationManager?.notify(notificationId, notification)
+            val notification = notificationModule.notification(title, message)
+            manager?.notify(notificationId, notification)
+        }
+
+        binding.btnNotifWithIntentActivity.setOnClickListener {
+            val intentMain = intentActivity<MainActivity>()
+            val notification = notificationModule.notificationWithIntentActivity(
+                title,
+                message,
+                intentMain,
+                "Open Activity"
+            )
+            manager?.notify(notificationId, notification)
         }
 
     }
