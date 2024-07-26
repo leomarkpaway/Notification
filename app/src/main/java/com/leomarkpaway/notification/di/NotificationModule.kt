@@ -39,7 +39,8 @@ class NotificationModuleImpl(
     }
 
     override fun notification(title: String, message: String): Notification {
-        return notificationBuilder.setContentTitle(title).setContentText(message).build()
+        return notificationBuilder.setContentTitle(title).setContentText(message)
+            .setSmallIcon(R.mipmap.ic_launcher).build()
     }
 
     override fun notificationWithIntentActivity(
