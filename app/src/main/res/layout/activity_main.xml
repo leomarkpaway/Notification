@@ -15,15 +15,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Normarl Notification" />
+            android:text="simple Notification" />
 
         <Button
-            android:id="@+id/btn_notif_with_activity"
+            android:id="@+id/btn_notif_with_intent_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_gravity="center_horizontal"
-            android:text="Notification with Activity Action" />
+            android:text="Notification with Intent Action" />
 
     </LinearLayout>
 
