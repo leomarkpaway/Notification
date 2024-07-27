@@ -7,8 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.leomarkpaway.notification.NotificationApp
 import com.leomarkpaway.notification.R
+import com.leomarkpaway.notification.common.enums.NotificationAction
 import com.leomarkpaway.notification.common.utils.pendingIntentActivity
+import com.leomarkpaway.notification.common.utils.pendingIntentReceiver
 import com.leomarkpaway.notification.databinding.ActivityMainBinding
+import com.leomarkpaway.notification.receiver.NotificationReceiver
 import com.leomarkpaway.notification.viewmodel.MainViewModel
 import com.leomarkpaway.notification.viewmodel.MainViewModelFactory
 
@@ -35,6 +38,19 @@ class MainActivity : AppCompatActivity() {
             val pendingIntent =
                 pendingIntentActivity<MainActivity>(0, PendingIntent.FLAG_IMMUTABLE, {})
             viewModel.showNotificationWithAction(1, title, pendingIntent, actionName)
+        }
+
+        binding.btnNotifWithReceiver.setOnClickListener {
+            val title = "notification with broadcast receiver"
+            val action = NotificationAction.Open
+            val pendingReceiver =
+                pendingIntentReceiver<NotificationReceiver>(
+                    0,
+                    PendingIntent.FLAG_IMMUTABLE
+                ) { intent ->
+                    intent.action = action.id
+                }
+            viewModel.showNotificationWithAction(1, title, pendingReceiver, action.name)
         }
 
     }
