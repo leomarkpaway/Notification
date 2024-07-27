@@ -24,6 +24,13 @@
             android:layout_gravity="center_horizontal"
             android:text="Notification with Intent Action" />
 
+        <Button
+            android:id="@+id/btn_notif_with_receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Notification with_broadcast_receiver" />
+
     </LinearLayout>
 
 </layout>
